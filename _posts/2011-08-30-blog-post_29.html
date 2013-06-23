@@ -1,0 +1,11 @@
+--- 
+layout: post
+name: blog-post_29
+title: "\xE5\x9F\xBA\xE4\xBA\x8E\xE6\x94\xAF\xE6\x8C\x81\xE5\x90\x91\xE9\x87\x8F\xE6\x9C\xBA\xE7\x9A\x84\xE6\x96\x87\xE6\x9C\xAC\xE6\x8C\x96\xE6\x8E\x98"
+date: 2011-08-30 12:26:00 +08:00
+categories: 
+- "\xE6\x94\xAF\xE6\x8C\x81\xE5\x90\x91\xE9\x87\x8F\xE6\x9C\xBA"
+- "\xE6\x96\x87\xE6\x9C\xAC\xE6\x8C\x96\xE6\x8E\x98"
+permalink: /2011/08/blog-post_29.html
+---
+文本挖掘中很重要的一项任务就是对文本进行分类，基本步骤就是收集训练文本和已知对应的分类，通过分类器来学习训练集，然后利用建立的模型对未知的文本进行分类检验。<br /><br />#指定原始文本存放目录，然后生成文本集。本例中的两类文本存放在crude和acq两个文件夹中，格式均为xml，若格式为纯文本，则需指定reader = readPlain<br /><br />crude = Corpus(DirSource("d:/crude"), readerControl = list(reader = readReut21578XML))<br /><br />acq = Corpus(DirSource("d:/acq"), readerControl = list(reader = readReut21578XML))<br /><br />#合并两个文本集，并将其转为纯文本格式<br />ws = c(acq, crude)<br />ws = tm_map(ws, as.PlainTextDocument)<br /><a name='more'></a><br /><br />#对文本集进行转换操作<br />ws = tm_map(ws, removeNumbers)<br />ws = tm_map(ws, stripWhitespace)<br />ws = tm_map(ws, removePunctuation)<br />ws =tm_map(ws, removeWords, stopwords("english"))<br />ws = tm_map(ws, tolower)<br /><br /><br />#若要对文本集进行筛选，可以利用如下两个命令，生成只包含keyword的新文本集<br />tm_filter(ws, FUN = searchFullText, "keyword")<br />#生成一个逻辑向量<br />tm_index(ws, FUN = searchFullText, "keyword")<br /><br />#用文本集生成词频矩阵，weightTfIdf参数控制是否使用Tf-idf算法<br />dtm = TermDocumentMatrix(ws,control = list(weighting = weightTfIdf))<br />#删除出现次数过少的词汇变量<br />dtm2 = removeSparseTerms(dtm, sparse=0.9)<br />inspect(dtm2[1:5,1:5])<br /><br />#若未使用Tf-idf算法则可利用下面命令来统计词频和相关性<br />findFreqTerms(dtm, 1, Inf)<br />findAssocs(dtm, "crude", 0.85)<br /><br />#将矩阵转为普通的数据框格式，并生成分类变量<br />data = as.data.frame(inspect(t(dtm2)))<br />data$typ e= factor(rep(1:2,times=c(50,20)))<br />levels(data$type )= c('acq','crude')<br /><br />#加载kernlab软件包<br />library(kernlab)<br />#从数据中抽取一半做为训练集，另一半作为检验集<br />sub = sample(c(0,1),size=70,replace=T)<br />sdata=data[sub==1,]<br />tdata=data[sub==0,]<br /><br />#建立分类模型并进行预测<br />ksvm = ksvm(type ~ ., data = sdata)<br />pre =predict(ksvm,tdata)<br />table(pre,tdata$type)<br /><br />结果如下：<br />pre &nbsp; &nbsp; acq crude<br />&nbsp; acq &nbsp; &nbsp;21 &nbsp; &nbsp; 5<br />&nbsp; crude &nbsp; 0 &nbsp; &nbsp; 4<br /><br />另个在R语言中还有RTextTools包和RcmdrPlugin.TextMining包可以辅助进行文本挖掘工作。

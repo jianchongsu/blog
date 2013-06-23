@@ -1,0 +1,10 @@
+--- 
+layout: post
+name: r_18
+title: "R\xE8\xAF\xAD\xE8\xA8\x80\xE4\xB8\xAD\xE8\xBF\x9B\xE8\xA1\x8C\xE5\x88\x86\xE4\xBD\x8D\xE6\x95\xB0\xE5\x9B\x9E\xE5\xBD\x92"
+date: 2011-07-18 20:51:00 +08:00
+categories: 
+- "\xE5\x88\x86\xE4\xBD\x8D\xE6\x95\xB0\xE5\x9B\x9E\xE5\xBD\x92"
+permalink: /2011/07/r_18.html
+---
+<b>分位数回归(Quantile Regression)</b>是计量经济学的研究前沿方向之一，它利用解释变量的多个分位数（例如四分位、十分位、百分位等）来得到被解释变量的条件分布的相应的分位数方程。与传统的OLS只得到均值方程相比，它可以更详细地描述变量的统计分布。<br /><br />但是在实际的经济生活中，传统的线性回归模型的假设常常不被满足，例如数据出现尖峰或厚尾的分布、存在显著的异方差等情况，这时的最小二乘法估计将不再具有上述优良性且稳健性非常差。最小二乘回归假定自变量X只能影响因变量的条件分布的位置，但不能影响其分布的刻度或形状的任何其他方面。<br /><br />为了弥补普通最小二乘法在回归分析中的缺陷，Koenker和Bassett于1978年提出了分位数回归(Quantile Regression)的思想。它依据因变量的条件分位数对自变量X进行回归，这样得到了所有分位数下的回归模型。因此分位数回归相比普通最小二乘回归只能描述自变量X对于因变量y局部变化的影响而言，更能精确地描述自变量X对于因变量y的变化范围以及条件分布形状的影响。分位数回归能够捕捉分布的尾部特征，当自变量对不同部分的因变量的分布产生不同的影响时．例如出现左偏或右偏的情况时。它能更加全面的刻画分布的特征，从而得到全面的分析，而且其分位数回归系数估计比OLS回归系数估计更稳健。<br /><a name='more'></a><br /><br />分位数回归采用加权残差绝对值之和的方法估计参数 ,其优点体现在以下几方面：首先 ,它对模型中的随机扰动项不需做任何分布的假定 ,这样整个回归模型就具有很强的稳健性；其次 ,分位数回归本身没有使用一个连接函数来描述因变量的均值和方差的相互关系，因此分位数回归有着比较好的弹性性质；第三，分位数回归由于是对所有分位数进行回归，因此对于数据中出现的异常点具有耐抗性；第四，不同于普通的最小二乘回归，分位数回归对于因变量具有单调变换性；最后，分位数回归估计出来的参数具有在大样本理论下的渐进优良性<br /><div><br /></div>#读入程序包<br />library("quantreg")<br />data("CPS1988")<br />#建立方程形式<br />cps_f= log(wage) ~ experience + I(experience^2) + education<br />#利用rq命令回归，默认为0.5分位数<br />cps_lad= rq(cps_f, data = CPS1988)<br />summary(cps_lad)<br /><br />#用多个分位数进行回归<br />cps_rqbi g= rq(cps_f, tau = seq(0.05, 0.95, by = 0.05),<br />&nbsp;data = CPS1988)<br />cps_rqbigs = summary(cps_rqbig)<br />#绘制图形<br />plot(cps_rqbigs)<br />由下图可见高工资人群的常数项非常高，而工作经验在低工资人群中边际效应较大，而在高工资人群中较小，教育的边际效应在大部分人群中基本一致。<br /><br /><div class="separator" style="clear: both; text-align: center;"><a href="http://4.bp.blogspot.com/-wy3P2ppCU3o/TiQsQt3s3vI/AAAAAAAAAUs/hl7-AzcBbt8/s1600/Rplot.png" imageanchor="1" style="margin-left: 1em; margin-right: 1em;"><img border="0" src="http://4.bp.blogspot.com/-wy3P2ppCU3o/TiQsQt3s3vI/AAAAAAAAAUs/hl7-AzcBbt8/s1600/Rplot.png" /></a></div>

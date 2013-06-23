@@ -1,0 +1,10 @@
+--- 
+layout: post
+name: k
+title: "\xE5\x88\xA9\xE7\x94\xA8\xE8\xBD\xAE\xE5\xBB\x93\xE7\xB3\xBB\xE6\x95\xB0\xE5\x88\xA4\xE6\x96\xADK\xE5\x9D\x87\xE5\x80\xBC\xE8\x81\x9A\xE7\xB1\xBB\xE7\x9A\x84\xE7\xB0\x87\xE4\xB8\xAA\xE6\x95\xB0"
+date: 2011-08-25 13:43:00 +08:00
+categories: 
+- "\xE8\x81\x9A\xE7\xB1\xBB\xE5\x88\x86\xE6\x9E\x90"
+permalink: /2011/08/k.html
+---
+<b>K均值聚类（K-means clustering）</b>计算简单，并且可以用于各种数据类型，但需要事先判断簇个数来作为输入参量，该参数的设置往往涉及到聚类效果。<br /><br />轮廓系数可以用来解决这个问题，<b>轮廓系数</b>（silhouette coefficient）方法结合了凝聚度和分离度，可以以此来判断聚类的优良性，其值在-1到+1之间取值，值越大表示聚类效果越好。<br /><br />依据这个原理，我们可以尝试用多个簇参量，反复计算在每个簇个数条件下的轮廓系数，当轮廓系数取最大时，其相应的簇个数是最好的。<br /><a name='more'></a><br /><br />在R语言中package fpc可以计算聚类后的一些评价指标，其中就包括了轮廓系数。<br /><br />#首先加载软件包<br />library(fpc)<br />#利用著名的iris数据集<br />data=iris[,1:4]<br />#设簇个数在2到5之间取值<br />for (i in 2:5){<br />#K聚类结果存于result变量<br />result &lt;- kmeans(data,i)<br />#求出聚类评价统计量<br />stats=cluster.stats(dist(data), result$cluster)<br />#将结果存入X<br />x[i]=stats$avg.silwidth<br />}

@@ -1,0 +1,12 @@
+--- 
+layout: post
+name: knncross-validation
+title: "\xE4\xB8\xBAKNN\xE5\x88\x86\xE7\xB1\xBB\xE5\x99\xA8\xE5\xA2\x9E\xE5\x8A\xA0Cross-Validation\xE5\x8A\x9F\xE8\x83\xBD"
+date: 2012-05-06 18:00:00 +08:00
+categories: 
+- "\xE6\x95\xB0\xE6\x8D\xAE\xE6\x8C\x96\xE6\x8E\x98"
+- KNN
+- "\xE4\xBA\xA4\xE5\x8F\x89\xE6\xA3\x80\xE9\xAA\x8C"
+permalink: /2012/05/knncross-validation.html
+---
+<br /><div class="separator" style="clear: both; text-align: center;"><a href="http://1.bp.blogspot.com/-fAHg1-SYcJA/T6ZJdbfl9mI/AAAAAAAAA3M/2U5PLbM38CY/s1600/220px-KnnClassification.svg.png" imageanchor="1" style="clear: left; float: left; margin-bottom: 1em; margin-right: 1em;"><img border="0" src="http://1.bp.blogspot.com/-fAHg1-SYcJA/T6ZJdbfl9mI/AAAAAAAAA3M/2U5PLbM38CY/s1600/220px-KnnClassification.svg.png" /></a></div>有这么一句很有趣的话，如果一个东西走路象鸭子、叫起来象鸭子、吃起来也象鸭子，那它就是一只鸭子。这是一种很符合我们直觉的思维方式：将未知的对象和已知的东西相比较，如果各个属性相近，我们就把它们归为一个类别。这就是KNN分类器的思想。<br /><br /><b>KNN即是kth Nearest Neighbor</b>。如果我们已经拥有一些已知类别的数据，要对一些未知类别的数据进行分类。基本思路就是将数据看作是在多元空间中的点，先计算未知点和周围k个已知点之间的距离。然后根据周围k个已知点的类别进行投票来决定未知点的类别。例如设k为3，对某个未知点找出其周围最近的三个已知点，如果这三个点有两个属于A类，一个属于B类，那么根据多数原则，将未知点的类别预测为A类。<br /><br />KNN算法的优势在于算法简单，稳健性强，可以构成非线性的判别边界，模型参数简单，只有距离测度和k参数。其弱点在于计算量较大，对异常点较为敏感，对不平衡数据也很敏感。R语言中class包的knn函数可以实行基本的KNN算法。<br /><br /><a name='more'></a>但只用knn函数来预测是有问题的。如果同样一个数据集，我们用它进行训练又用它进行预测，这显然是不合适的。这就好象是用课堂上讲过的例题来考察一个学生的掌握程度。这样往往会高估模型的准确性。或者说形成了<b>过度拟合(Overfit)</b>的情况。处理过度拟合的问题通常有以下几个思路：其一是保留数据，也就是Hold-Out，Cross-Validation，Loocv这些方法；其二是对模型的复杂度进行约束，例如AIC指标的思路就是对模型参数个数进行惩罚。再如岭回归(Ridge Regression)和套索方法(lasso)就是对模型参数的总强度进行惩罚。本文只涉及到Cross-Validation，其它的留待之后再分解吧。<br /><br /><b>Cross-Validation（交叉检验）</b>就是将原始数据随机分割为F等分，保留其中一份数据，用剩下的数据进行训练，再用保留的数据对训练得到的模型进行检验。这样的步骤重复F次，我们就得到了较为客观的模型评价。从而可以确定较好的参数值。对Cross-Validation有兴趣的同学还可以参看<a href="http://www.autonlab.org/tutorials/overfit10.pdf">这份文档</a>。<br /><br />下面我们根据上述思路建立一个vknn函数，使其具备交叉检验的功能。利用iris数据集为研究对象。代码来自于<a href="http://statistics.berkeley.edu/classes/s133/all2011.pdf">《Concepts in Computing with Data》</a>这本书。顺便推荐一下这本非常精彩的R教程。<a href="https://gist.github.com/2621347">代码如下</a>：<br /><br /><script src="https://gist.github.com/2621347.js">  </script><br />当然，将上面的函数略加修改，即可用到其它的分类器上面。此外，class包中也有knn.cv函数，可以完成同样的工作。对于KNN算法，R语言中还有一个kknn包值得关注，它对于基本的knn函数有很大程度的扩展。它不只可以处理分类问题，还可以处理回归问题。另外它还可以结合核函数，利用距离进行加权计算。最后要说的是，使用KNN算法之前要先将数据标准化处理。<br /><br />参考资料：<br />《Handbook of statistical Analysis and Data mining Applications》

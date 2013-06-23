@@ -1,0 +1,10 @@
+--- 
+layout: post
+name: r_14
+title: "\xE5\x9C\xA8R\xE8\xAF\xAD\xE8\xA8\x80\xE4\xB8\xAD\xE8\xBF\x9B\xE8\xA1\x8C\xE7\xAE\x80\xE5\x8D\x95\xE7\x9A\x84\xE4\xBA\xA4\xE6\x98\x93\xE7\xB3\xBB\xE7\xBB\x9F\xE5\x9B\x9E\xE6\xB5\x8B"
+date: 2011-04-14 19:08:00 +08:00
+categories: 
+- "\xE4\xBA\xA4\xE6\x98\x93\xE7\xB3\xBB\xE7\xBB\x9F"
+permalink: /2011/04/r_14.html
+---
+从简单的概念上讲，交易系统是系统交易思维的物化。系统交易思维是一种理念，它体现为在行情判断分析中对价格运动的总体性的观察和时间上的连续性观察，表现为在决策特征中对交易对象、交易资本和交易投资者的这三大要素的全面体现。<br /><br />本文仅从进出场的规则入手，将均线交易方法运用到沪市综指上进行回测以检验效果。下述代码仅供参考。<br /><br />#首先加载两个必要的包<br />library(quantmod)<br />library(PerformanceAnalytics)<br /><a name='more'></a><br /><br />#从yahoo数据库读取上海综指的价格数据<br />getSymbols('^SSEC',src='yahoo')<br /><br />#从中提取收盘价<br />close=(Cl(SSEC))<br /><br />#求取5日均价并去除NA值<br />mv5=na.omit(SMA(close,5))<br /><br />#利用条件语句判断收盘价是否穿越均线，得到仓位向量<br />sig=Lag(ifelse(close&gt;mv5,1,-1))<br /><br />#将收盘价的收益率乘上仓位向量，再去除NA<br />ret=na.omit(ROC(type='discrete',close)*sig)<br /><br />#通过累积乘法得到交易的收益率序列<br />eq=cumprod(1+ret)<br />plot(eq)<br /><br />#绘制交易规则的收益图<br />table.Drawdowns(ret,top=10)<br />table.DownsideRisk(ret)<br />charts.PerformanceSummary(ret)<br /><div><br /></div>

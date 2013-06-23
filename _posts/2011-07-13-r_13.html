@@ -1,0 +1,10 @@
+--- 
+layout: post
+name: r_13
+title: "\xE5\x9C\xA8R\xE8\xAF\xAD\xE8\xA8\x80\xE4\xB8\xAD\xE8\xBF\x9B\xE8\xA1\x8C\xE9\x9D\xA2\xE6\x9D\xBF\xE6\x95\xB0\xE6\x8D\xAE\xE5\x88\x86\xE6\x9E\x90"
+date: 2011-07-13 20:31:00 +08:00
+categories: 
+- "\xE9\x9D\xA2\xE6\x9D\xBF\xE6\x95\xB0\xE6\x8D\xAE"
+permalink: /2011/07/r_13.html
+---
+<b>面板数据（Panel Data）</b>是截面数据与时间序列数据综合起来的一种数据类型。它有时间序列和截面两个维度，当这类数据按两个维度排列时，是排在一个平面上，与只有一个维度的数据排在一条线上有着明显的不同，整个表格像是一个面板,所以把panel data译作“面板数据”。<br /><br />面板数据模型的选择通常有三种形式：<br /><br />第一种是混合估计模型（Pooled Regression Model）。如果从时间上看，不同个体之间不存在显著性差异；从截面上看，不同截面之间也不存在显著性差异，那么就可以直接把面板数据混合在一起用普通最小二乘法（OLS）估计参数。<br /><a name='more'></a><br /><br />第二种是固定效应模型（Fixed Effects Regression Model）。如果对于不同的截面或不同的时间序列，模型的截距不同，则可以采用在模型中添加虚拟变量的方法估计回归参数。该模型刻画了不同个体的特殊影响，而且这个影响不随样本变化。<br /><br />第三种是随机效应模型（Random Effects Regression Model）。如果固定效应模型中的截距项包括了截面随机误差项和时间随机误差项的平均效应，并且这两个随机误差项都服从正态分布，则固定效应模型就变成了随机效应模型。该模型刻画了不同个体的特殊影响，但这个影响会随样本变化。<br /><br />首先载入程序包和数据<br />library(plm)<br /><br />将数据转成可处理的面板格式，特别要注意标明个体名和时间名<br />pgr &lt;- plm.data(data, index = c("firm", "year"))<br />先用混合估计模型进行估计<br />gr_pool &lt;- plm(LOGOUT ~ LOGLABOR + LOGKAP, data = pgr,<br />model = "pooling")<br /><br />再用固定效应模型进行估计<br />gr_fe &lt;- plm(LOGOUT ~ LOGLABOR + LOGKAP, data = pgr,<br />model = "within")<br /><br />如果要判断固定效应模型是否比混合估计模型更好，可采用F检验<br />pFtest(gr_fe, gr_pool)<br /><br />最后我们用随机效应模型进行估计<br />gr_re &lt;- plm(LOGOUT ~ LOGLABOR + LOGKAP, data = pgr,<br />model = "random", random.method = "swar")<br />summary(gr_re)<br /><br />要判断随机效应模型是否与固定效应模型有区别，可采用Hausman检验<br />phtest(gr_re, gr_fe)

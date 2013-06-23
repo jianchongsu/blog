@@ -1,0 +1,10 @@
+--- 
+layout: post
+name: rapidminer_24
+title: "rapidminer\xE6\x95\xB0\xE6\x8D\xAE\xE6\x8C\x96\xE6\x8E\x98\xE5\x85\xA5\xE9\x97\xA8\xE4\xB9\x8B\xE4\xB8\x89\xEF\xBC\x9A\xE7\x89\xB9\xE5\xBE\x81\xE9\x80\x89\xE6\x8B\xA9"
+date: 2011-10-25 10:47:00 +08:00
+categories: 
+- rapidminer
+permalink: /2011/10/rapidminer_24.html
+---
+在一般数据分析条件下，样本集合就类似一个Excel表格，每个样本数据排为一行，而纵列则代表了样本不同的特征或属性。有时候样本数据的特征过多，甚至特征数超过样本数就形成所谓的“维灾难”。<br /><br />维数过高对于大多数回归分类模型来说是难以忍受的，而且这么高维特征可能会大大干扰训练效果、降低分类性能，因此有必要采取措施进一步地降低特征空间的维数。降维过程包括两类方法：一种是特征选择又称为子集选择，即从最初的N个特征中选取n个特征，而这n个特征可以更简洁、更有效地表示样本的信息。另一种是数据变换，即把N个原始特征变换为n个新的特征，例如主成分分析、投影寻踪方法。<br /><br />特征选择的一般思路是：构造一个评估函数，对特征子集中的每一个特征进行独立的评估，使每一个特征得到一个评估分，然后对所有特征按照其评估分大小进行排序，选取满足阀值的预定数目个特征形成特征子集。<br /><a name='more'></a><br /><br />从使用方法上，特征选择又分为过滤器（Filter）方法和嵌入（Wrapper）方法，Filter是独立于分类器训练的，而Wrapper是结合分类器的效果进行选择的。Filter处理速度快，而Wrapper比较准确，但丧失了数据的一般性。rapidminer就采用Wrapper方法。<br /><br />我们首先在Repositories中选择sample-&gt;processes-&gt;04_Attributes-&gt;10_ForwardSelect。该例子中用的方法是以前向搜索为选择顺序，以回归均方误为评估指标进行特征选择。<br /><br />点击运行，然后观察结果窗口，在ProcessLog标签下观察散点图，纵轴选performance，横轴选generation，可以观察到在选择3个变量时，均方误达到最低，从ExampleSet标签可以看到最终选择了a1,a2,a3,这三个变量。<br /><div class="separator" style="clear: both; text-align: center;"><a href="http://3.bp.blogspot.com/-wWwhWF9yZhc/TqYjBVmPIAI/AAAAAAAAAes/Ep3DTT0z8VQ/s1600/plot.jpg" imageanchor="1" style="margin-left: 1em; margin-right: 1em;"><img border="0" height="307" src="http://3.bp.blogspot.com/-wWwhWF9yZhc/TqYjBVmPIAI/AAAAAAAAAes/Ep3DTT0z8VQ/s400/plot.jpg" width="400" /></a></div><br /><div><br /></div><br />

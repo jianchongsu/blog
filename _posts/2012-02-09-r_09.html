@@ -1,0 +1,10 @@
+--- 
+layout: post
+name: r_09
+title: "\xE6\x83\xB3\xE6\xAC\xA2\xE4\xB9\x90\xE4\xB8\x80\xE4\xB8\x8B\xE5\x90\x97\xEF\xBC\x9F\xE8\xAF\x95\xE8\xAF\x95\xE5\x9C\xA8R\xE9\x87\x8C\xE9\x9D\xA2\xE7\x8E\xA9\xE6\x95\xB0\xE7\x8B\xAC"
+date: 2012-02-09 11:04:00 +08:00
+categories: 
+- "\xE6\x95\xB0\xE7\x8B\xAC"
+permalink: /2012/02/r_09.html
+---
+<a href="http://en.wikipedia.org/wiki/Sudoku">数独（Sudoku）</a>一词来自日语，意思是“单独的数字”。它是一种填数字游戏，最初由十八世纪的瑞士数学家欧拉发明的。1984年日本益智杂志将其加以改良，并增加了难度，还为它取了新名字称做“数独”。1997年，一位爱尔兰人无意中在日本发现这个游戏，并编写了一个计算机程序来自动生成完整的数独方阵。2004年年底，伦敦《时报》开辟了数独专栏，之后，世界各国数十家日报相继开辟专栏来介绍数独。专门介绍这种娱乐的杂志和一本又一本的书籍如雨后春笋般涌现，相关的比赛，网站和博客等等，也接二连三地冒出来。<br /><br />R语言拥有数千种扩展包，除了提供数据分析之外还有各种千奇百怪的功能。其中就包括了<a href="http://cran.r-project.org/web/packages/sudoku/index.html">sudoku包</a>，它的主要功能包括生成数独问题、解数独、玩数独，还可以进行导入和导出。<br /><a name='more'></a><br />我们从这个<a href="http://www.sudoku.name/index-cn.php">数独网站</a>来找一个数独题目，首先要将数独图转为一个文本文件。题目和转化后的形式如下：<br /><div class="separator" style="clear: both; text-align: center;"><a href="http://3.bp.blogspot.com/-CgKPNMJGOaM/TzM2jX0DQ_I/AAAAAAAAAtE/C0vqDfAgoWI/s1600/%E6%8D%95%E8%8E%B7.JPG" imageanchor="1" style="clear: left; float: left; margin-bottom: 1em; margin-right: 1em;"><img border="0" height="200" src="http://3.bp.blogspot.com/-CgKPNMJGOaM/TzM2jX0DQ_I/AAAAAAAAAtE/C0vqDfAgoWI/s200/%E6%8D%95%E8%8E%B7.JPG" width="188" /></a></div><br /><div style="text-align: center;"><b>--13-94--</b></div><div style="text-align: center;"><b>3-54---1-</b></div><div style="text-align: center;"><b>6----72-9</b></div><div style="text-align: center;"><b>--4-6--28</b></div><div style="text-align: center;"><b>--31-86--</b></div><div style="text-align: center;"><b>78-2--3--</b></div><div style="text-align: center;"><b>5-97----6</b></div><div style="text-align: center;"><b>-6---15-3</b></div><div style="text-align: center;"><b>--76-59--</b></div><br />然后将其读入转化为矩阵Z，即可由solveSudoku函数解出，当然如果想挑战一下自己的话也可以用playSudoku(z)在R里面直接尝试解题。<br /><blockquote class="tr_bq">z &lt;- &nbsp;readSudoku('d:/test.txt')<br />solveSudoku(z)</blockquote>sudoku包不仅可以解数独，还能自动生成数独题目，或是从英国的数独网站抓取当天的题目。<br /><br /><div style="text-align: center;"><br /></div>

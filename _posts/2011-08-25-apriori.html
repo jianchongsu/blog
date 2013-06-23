@@ -1,0 +1,10 @@
+--- 
+layout: post
+name: apriori
+title: "\xE5\x88\xA9\xE7\x94\xA8apriori\xE7\xAE\x97\xE6\xB3\x95\xE8\xBF\x9B\xE8\xA1\x8C\xE5\x85\xB3\xE8\x81\x94\xE5\x88\x86\xE6\x9E\x90"
+date: 2011-08-25 14:59:00 +08:00
+categories: 
+- "\xE5\x85\xB3\xE8\x81\x94\xE5\x88\x86\xE6\x9E\x90"
+permalink: /2011/08/apriori.html
+---
+<b>关联分析（association analysis）</b>又常称为购物篮分析，是指如果两个或多个事物之间存在一定的关联,那么其中一个事物就能通过其他事物进行预测.它的目的是为了挖掘隐藏在数据间的相互关系。<br /><br />关联分析最常用在市场销售数据中，顾客的购物篮中如果包含啤酒的同时，还包含了尿布，这就揭示了这两种物品之间的关联。关联分析的挖掘任务可分解为两个步骤：一是发现频繁项集，二是从频繁项集中产生规则。<br /><br />下面用R语言中的arules扩展包来实现apriori算法，来进行关联分析<br /><a name='more'></a><br /><br />library(arules)<br />#从rattle包中读入数据<br />dvdtrans &lt;- read.csv(system.file("csv", "dvdtrans.csv",package="rattle"))<br /><br />数据结构如下，ID表示购物篮编号，Item表示物品。<br />&nbsp; ID &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;Item<br />1 &nbsp;1 &nbsp; Sixth Sense<br />2 &nbsp;1 &nbsp; &nbsp; &nbsp; &nbsp; LOTR1<br />3 &nbsp;1 Harry Potter1<br />4 &nbsp;1 &nbsp; &nbsp;Green Mile<br />5 &nbsp;1 &nbsp; &nbsp; &nbsp; &nbsp; LOTR2<br />6 &nbsp;2 &nbsp; &nbsp; Gladiator<br /><br />#将数据转化为合适的格式<br />data &lt;- as(split(dvdtrans$Item, dvdtrans$ID),"transactions")<br /><br />#用 apriori命令生成频繁项集，设其支持度为0.5，置信度为0.8<br />rules &lt;- apriori(data, parameter=list(support=0.5,confidence=0.8))<br /><br />#用inspect命令提取规则<br />inspect(rules)<br /><br />&nbsp; lhs &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;rhs &nbsp; &nbsp; &nbsp; &nbsp; support confidence &nbsp; &nbsp; lift<br />1 {Patriot} &nbsp; &nbsp; =&gt; {Gladiator} &nbsp; &nbsp; 0.6 &nbsp;1.0000000 1.428571<br />2 {Gladiator} &nbsp; =&gt; {Patriot} &nbsp; &nbsp; &nbsp; 0.6 &nbsp;0.8571429 1.428571<br />3 {Sixth Sense} =&gt; {Gladiator} &nbsp; &nbsp; 0.5 &nbsp;0.8333333 1.190476<br /><br />这说明购买爱国者电影的顾客同时也会购买角斗士 :-)

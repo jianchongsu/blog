@@ -1,0 +1,10 @@
+--- 
+layout: post
+name: r_28
+title: "R\xE8\xAF\xAD\xE8\xA8\x80\xE4\xB8\xAD\xE7\x9A\x84\xE5\xA4\x9A\xE7\xBB\xB4\xE6\xA0\x87\xE5\xBA\xA6\xE5\x88\x86\xE6\x9E\x90"
+date: 2011-06-29 11:19:00 +08:00
+categories: 
+- "\xE5\xA4\x9A\xE7\xBB\xB4\xE6\xA0\x87\xE5\xBA\xA6\xE5\x88\x86\xE6\x9E\x90"
+permalink: /2011/06/r_28.html
+---
+<b>多维标度</b>（Multidimensional scaling，缩写MDS，又译“多维尺度”）也称作“相似度结构分析”（Similarity structure analysis），属于多重变量分析的方法之一，是社会学、数量心理学、市场营销等统计实证分析的常用方法。<br /><br />下面的算例以一个多维数据为样本，其中指标变量有17个，样本个数为27个。<br /><a name='more'></a><br /><br />#读入数据<br />data1=read.table('clipboard',T)<br />#数据标准化<br />test=scale(data1[,2:17])<br />#计算距离矩阵<br />d=dist(test)<br />#利用经典多维标度方法建模<br />voles=cmdscale(d,k=10,eig=T)<br />#计算前两个维度的特征值的比，超过0.9，意味着用两个维度即可表示出整个数据结构。<br />sum((voles$eig[1:2])^2)/sum((voles$eig)^2)<br />x &lt;- voles$points[,1]<br />y &lt;- voles$points[,2]<br />#绘制两维坐标<br />plot(x, y, xlab = "Coordinate 1", ylab = "Coordinate 2",<br />&nbsp;xlim = range(x)*1.2, type = "n")<br />text(x, y, labels = data1$地区)<br /><div class="separator" style="clear: both; text-align: center;"><a href="http://3.bp.blogspot.com/-JQhIfZ6CNWc/TgqZRboYazI/AAAAAAAAARk/4rEkqo1to20/s1600/Rplot.jpeg" imageanchor="1" style="margin-left: 1em; margin-right: 1em;"><img border="0" height="313" src="http://3.bp.blogspot.com/-JQhIfZ6CNWc/TgqZRboYazI/AAAAAAAAARk/4rEkqo1to20/s400/Rplot.jpeg" width="400" /></a></div>上图显示，广东江苏二者形成一组，河南、山东、湖北等省形成一组，之后江西、新疆等省又是一组，而湖南、甘肃的地位比较特别。

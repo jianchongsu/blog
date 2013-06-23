@@ -1,0 +1,10 @@
+--- 
+layout: post
+name: knitr
+title: "\xE8\xA2\xABknitr\xE5\x8C\x85\xE7\xBB\x99\xE9\x9C\x87\xE6\x92\xBC\xE5\x88\xB0\xE4\xBA\x86"
+date: 2012-05-23 06:15:00 +08:00
+categories: 
+- knitr
+permalink: /2012/05/knitr.html
+---
+在食神这部电影中，薛家燕以极为夸张的方式表现了黯然销魂饭有多么好吃。各位可脑补一下这个场景，然后将赞叹的对象换成<a href="http://yihui.name/knitr/">knitr</a>包。knitr包是谢益辉创建的一个用于生成动态报告的R语言扩展包，和它相类似的功能在之前是由Sweave来完成的。关于Sweave的用处，谢大牛曾经在统计之都写过一个<a href="http://cos.name/2010/11/reproducible-research-in-statistics/">专门的文章</a>。并由此引出了“可重复性研究”(Reproducible Research)这个概念。<br /><br />可重复性研究本质上是要求研究过程的开源和透明。所有的数据分析过程，从数据获取、转换处理到分析，最后生成报告，均由一份代码文件描述完成。这样的做法不仅使用户本身能从重复性工作中抽身出来，也能使其它人分享你的研究过程，并从中获益。knitr包就是能让用户在这一份文档中同时写Latex代码和R代码，并使之完美结合。在knitr官网上，也详细提供了这个扩展包的由来、特点以及各种示范帮助。<br /><br />使用knitr生成报告并不难，象我的话，使用环境是windows7+CTeX套装+RStudio+R+knitr。先在RStudio的Sweave选项中设置用knitr来解释Rnw文档。然后新建一个Rnw文件，可同时编写LaTex和R代码。Rnw文档中的R代码由Chunk来标记注明。点击compile PDF就可以生成最终的报告。报告中对R代码会自动进行语法高亮，R运行的结果也自然附上。当然你可以在Chunk中进行设置，隐藏代码或是运行结果。<br /><br />只要有一定R语言基础和LaTex的基础，knitr很容易掌握，笔者研究了大半天就捣鼓出来一个还过得去的PDF(用散点图示范ggplot2的核心概念)。各位若感兴趣，可以到<a href="https://www.box.com/s/1523b68d66ea17b8b6f5">这里下载</a>这个PDF文件，以了解knitr的效果。原始代码<a href="https://gist.github.com/2771760">在此</a>。<br /><br />从R-blogger网站上看，knitr包广受关注和好评，而且在即将开始的第五届R语言会议中，统计之都的魏太云也将向各位介绍knitr包的特点。敬请期待吧！<br /><br />06.15补充：研究了一下markdown标记语言，的确可以在五分钟内掌握，并生成不错的web文档，当然最好可以有一点网页的基础。这里是和上面那个PDF内容相同的<a href="https://github.com/xccds/Rblog/blob/master/markdown.md">一个示例</a>。

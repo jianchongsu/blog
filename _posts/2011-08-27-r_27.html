@@ -1,0 +1,10 @@
+--- 
+layout: post
+name: r_27
+title: "R\xE8\xAF\xAD\xE8\xA8\x80\xE4\xB8\xAD\xE5\xA6\x82\xE4\xBD\x95\xE8\xAF\xBB\xE5\x8F\x96\xE5\x85\xAC\xE5\xBC\x80\xE6\x95\xB0\xE6\x8D\xAE\xE5\xBA\x93"
+date: 2011-08-27 16:34:00 +08:00
+categories: 
+- "\xE5\x85\xAC\xE5\xBC\x80\xE6\x95\xB0\xE6\x8D\xAE"
+permalink: /2011/08/r_27.html
+---
+世界上有很多<b>公开数据库(open data)</b>以供研究者使用。在R语言中也有不少程序包可以直接从这些数据源中读取数据。在之前的<a href="http://xccds1977.blogspot.com/2011/04/gdp.html">博文</a>里，已经介绍quantmod和WDI。前者可以从雅虎和美联储读取数据，后者可以从世界银行读取数据。今天再介绍一个拥有数万个数据的网站，就是<a href="http://datamarket.com/">http://datamarket.com</a>。这里可以看到<a href="http://blog.datamarket.com/2011/05/11/presentation-at-media-3-0-in-bergen/">网站介绍</a>。<br /><br />首先我们在网站上注册一个免费帐号，然后在R中安装如下的package<br />install.packages("rdatamarket")<br />library(rdatamarket)<br /><br />在网站上找到一个你感觉有趣的时序数据，例如这里的是美国失业数据，将其IP地址存入变量<br /><a name='more'></a><br />ip &lt;- 'http://datamarket.com/data/set/1ki8/persons-unemployed-15-weeks-or-longer-as-a-percent-of-the-civilian-labor-force#ds=1ki8'<br /><br />dminfo命令可以了解此数据的元数据，然后用dmseries可以直接读取数据，然后利用绘图命令得到结果，很简单吧<br /><br />unemp &lt;- dmseries(ip)<br />plot(unemp)<br /><div class="separator" style="clear: both; text-align: center;"><a href="http://3.bp.blogspot.com/-izczWwsHd4Y/Tlir5yRnl3I/AAAAAAAAAZM/bQWiKCxqwQc/s1600/Rplot.jpeg" imageanchor="1" style="margin-left: 1em; margin-right: 1em;"><img border="0" height="290" src="http://3.bp.blogspot.com/-izczWwsHd4Y/Tlir5yRnl3I/AAAAAAAAAZM/bQWiKCxqwQc/s400/Rplot.jpeg" width="400" /></a></div><br />

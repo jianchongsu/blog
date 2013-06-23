@@ -1,0 +1,10 @@
+--- 
+layout: post
+name: rfgls
+title: "R\xE8\xAF\xAD\xE8\xA8\x80\xE4\xB8\xAD\xE5\xAE\x9E\xE7\x8E\xB0\xE5\x8F\xAF\xE8\xA1\x8C\xE5\xB9\xBF\xE4\xB9\x89\xE6\x9C\x80\xE5\xB0\x8F\xE4\xBA\x8C\xE4\xB9\x98\xEF\xBC\x88FGLS\xEF\xBC\x89\xE5\x9B\x9E\xE5\xBD\x92"
+date: 2011-07-13 09:41:00 +08:00
+categories: 
+- "\xE5\xB9\xBF\xE4\xB9\x89\xE6\x9C\x80\xE5\xB0\x8F\xE4\xBA\x8C\xE4\xB9\x98"
+permalink: /2011/07/rfgls.html
+---
+线性回归中经常会遇到异方差的问题。如果干扰项的方差与自变量之间存在某种关系，那么在这种前提下，一种补救方法就是利用加权最小二乘（WLS）。<br /><br />首先利用OSL对模型进行回归，得到模型残差，以残差的平方来代替干扰项的方差。<br />然后，将残差的平方的对数做因变量，将自变量的对数做自变量，进行第二次回归，得到的系数即为自变量的幂h。最后，构造权重（1/x^(h/2)），手动操作时，需要在原模型两边分别除以权重，构造新的方程进行回归。但在R语言中进行回归时，可以直接利用weight参数，将weight=1/x^h 即可。<br /><a name='more'></a><br /><br />代码如下：<br />#首先载入数据，进行初步回归<br />library(AER)<br />data("Journals")<br />journals &lt;- Journals[, c("subs", "price")]<br />journals$citeprice &lt;- Journals$price/Journals$citations<br />jour_lm &lt;- lm(log(subs) ~ log(citeprice), data = journals)<br />summary(jour_lm)<br /><br />#再进行辅助回归，求出h<br />auxreg &lt;- lm(log(residuals(jour_lm)^2) ~ log(citeprice),<br />&nbsp;data = journals)<br />h=coef(auxreg)[2]<br /><br />#利用WSL方法求出最终结果<br />jour_fgls1 &lt;- lm(log(subs) ~ log(citeprice),<br />&nbsp;weights = 1/citeprice^h, data = journals)<br />summary(jour_fgls1)<br /><br />可以用这种思路，将新得到的回归残差再次作辅助回归，反复迭代后得出较为精确的结果<br /><br />gamma2i &lt;- coef(auxreg)[2]<br />gamma2 &lt;- 0<br />&nbsp;while(abs((gamma2i - gamma2)/gamma2) &gt; 1e-7) {<br />&nbsp;gamma2 &lt;- gamma2i<br />fglsi &lt;- lm(log(subs) ~ log(citeprice), data = journals,<br />&nbsp;weights = 1/citeprice^gamma2)<br />gamma2i &lt;- coef(lm(log(residuals(fglsi)^2) ~<br />log(citeprice), data = journals))[2]}<br />jour_fgls2 &lt;- lm(log(subs) ~ log(citeprice), data = journals,<br />&nbsp;weights = 1/citeprice^gamma2)<br />summary(jour_fgls2)<br /><br />本文例子来自于《Applied Econometrics with R》一书

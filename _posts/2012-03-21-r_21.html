@@ -1,0 +1,11 @@
+--- 
+layout: post
+name: r_21
+title: "R\xE8\xAF\xAD\xE8\xA8\x80\xE7\xBC\x96\xE7\xA8\x8B\xE5\x85\xA5\xE9\x97\xA8\xE4\xB9\x8B\xE4\xB8\x83\xEF\xBC\x9A\xE7\xA8\x8B\xE5\xBA\x8F\xE6\x9F\xA5\xE9\x94\x99\xEF\xBC\x88\xE5\xAE\x8C\xEF\xBC\x89"
+date: 2012-03-21 15:46:00 +08:00
+categories: 
+- "\xE7\xBC\x96\xE7\xA8\x8B"
+- "\xE5\x85\xA5\xE9\x97\xA8\xE6\x95\x99\xE7\xA8\x8B"
+permalink: /2012/03/r_21.html
+---
+<br /><div class="separator" style="clear: both; text-align: center;"><a href="http://thumbsnap.com/i/cB0EGuPt.png" imageanchor="1" style="clear: left; float: left; margin-bottom: 1em; margin-right: 1em;"><img border="0" height="200" src="http://thumbsnap.com/i/cB0EGuPt.png" width="170" /></a></div>写程序难免会出错，有时候一个微小的错误需要花很多时间来调试程序来修正它。所以掌握必要的调试方法能避免很多的无用功。<br /><br />基本的除错方法是跟踪重要变量的赋值情况。在循环或条件分支代码中加入显示函数能完成这个工作。例如<b>cat('var',var,'\n')</b>。在确认程序运行正常后，可以将这行代码进行注释。好的编程风格也能有效的减少出错的机会。在编写代码时先写出一个功能最为简单的部分，然后在此基础上逐步添加其它复杂的功能。对输出结果进行绘图或统计汇总也能揭示一些潜在的问题。<br /><a name='more'></a><br /><br />另一种避免出错的方法是尽量使用函数。使用函数能将一个大的程序分解成几个小型的模块。每一个函数模块只负责某一种功能的实现。这样使程序更容易理解和维护，而且容易针对各函数的输入、计算、输出分别进行查错调试。R语言中函数的运行不会影响到全局变量，所以使用函数基本上不会有什么副作用。<br /><br />但是在使用函数时需要注意的问题是输入参数的不可预测性。未预料到的输入参数会产生奇怪的或是错误的输出，所以在函数起始部分就要用条件语句来检查参数的正确与否。如果输入参数不正确，可以用下面的语句来停止程序执行<b>stop('your message here.')</b>。<br /><br />对函数进行调试的重要工具是<b>browser()</b>，它可以使我们进入调试模式逐行运行代码。在函数中的某一行插入browser()后，在函数执行时会在这一行暂停中断，并显示一个提示符。此时我们可以在提示符后输入任何R语言的交互式命令进行检查调试。输入n则会逐行运行程序，并提示下一行将运行的语句。输入c会直接跳到下一个中断点。而输入Q则会直接跟出调试模式。<br /><br /><b>debug()</b>函数和browser()是相似的，如果你认为某个函数，例如fx(x)，有问题的话，使用debug(fx)即可进入调试模式。它本质上是在函数的第一行加入了browser，所以其它提示和命令都是相同的。其它与程序调试有关的函数还包括:<br /><br /><ul><li><b>trace</b>(fx1,fx2),该函数可以让我们在调用fx1函数时自动调用fx2，通常我们将browser作为fx2；</li><li><b>setBreakpoint</b>(filename,linenumber),该函数可在程序的某一行设置中断点；</li><li><b>traceback</b>()，在程序出现报错时，可使用该函数回溯程序调用过的函数名</li></ul>有兴趣的各位可参见相关R语言帮助文档，或是《The Art of R Programming》的第十三章。<br />

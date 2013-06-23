@@ -1,0 +1,10 @@
+--- 
+layout: post
+name: r_26
+title: "\xE5\x9C\xA8R\xE8\xAF\xAD\xE8\xA8\x80\xE4\xB8\xAD\xE8\xBF\x9B\xE8\xA1\x8C\xE5\x9C\xB0\xE7\x90\x86\xE4\xBF\xA1\xE6\x81\xAF\xE7\xBB\x98\xE5\x9B\xBE"
+date: 2011-04-27 12:00:00 +08:00
+categories: 
+- "\xE5\x8F\xAF\xE8\xA7\x86\xE5\x8C\x96"
+permalink: /2011/04/r_26.html
+---
+数据可视化是将科学计算中产生的大量非直观的、抽象的或者不可见的数据，借助计算机图形学和图像处理等技术，以图形图像信息的形式，直观、形象地表达出来，并进行交互处理。地图是空间信息可视化的最主要和最常用的形式。<br /><br />R语言中也有相关的扩展包可以使用，例如maps,sp等。下面的例子是仿照《R Graph Cookbook》一书中的例子，利用R中的sp空间分析包得到的。代码如下：<br /><br /><a name='more'></a><br /><br />#首先加载空间分析包<br />library(sp)<br /><br />#从gadm.org网站上得到中国的省区地理数据，并加载到R软件内存中<br />load(url("http://gadm.org/data/rda/CHN_adm1.RData"))<br /><br />#从全国水资源公报上得到中国各省的人均水资源占有量，并存到变量中<br />gadm$water=c(1085,325,1473,3524,1079,2935,3989,2790,4147,358,2046,434<br />,1652,2490,451,3362,1467,871,2145,182,1000,12278,448,377,<br />182,1221,3135,152,4976,10000,5298,2005)<br /><br />#利用空间绘图命令进行绘图<br />spplot(gadm,"water",col.regions = rev(terrain.colors(gadm$water)),main="中国人均水资源拥有量")<br /><br /><div class="separator" style="clear: both; text-align: center;"><a href="http://4.bp.blogspot.com/-kOuNdoTa6tE/TbeUuhmTVJI/AAAAAAAAAOU/QU8xVDoRmoE/s1600/plot_zoom.jpg" imageanchor="1" style="margin-left: 1em; margin-right: 1em;"><img border="0" height="300" src="http://4.bp.blogspot.com/-kOuNdoTa6tE/TbeUuhmTVJI/AAAAAAAAAOU/QU8xVDoRmoE/s400/plot_zoom.jpg" width="400" /></a></div>

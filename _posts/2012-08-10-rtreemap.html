@@ -1,0 +1,10 @@
+--- 
+layout: post
+name: rtreemap
+title: "\xE5\x9C\xA8R\xE8\xAF\xAD\xE8\xA8\x80\xE4\xB8\xAD\xE7\xBB\x98\xE5\x88\xB6Treemap"
+date: 2012-08-10 12:30:00 +08:00
+categories: 
+- "\xE5\x8F\xAF\xE8\xA7\x86\xE5\x8C\x96"
+permalink: /2012/08/rtreemap.html
+---
+Treemap是一种流行的可视化技术，它用不同尺寸的嵌套矩形来表现层次数据。最常见的层次数据包括了文件目录、文章结构、组织结构等等。Treemap技术是通过矩形的大小来显示节点的重要性，并通过嵌套层次来显示结构的层级。R语言中的treemap包就可以实现这种可视化技术，下图就是对苹果公司财务报表的可视化。<br /><div class="separator" style="clear: both; text-align: center;"><a href="http://2.bp.blogspot.com/-pKATjzSwRQ8/UCSNBRYV1FI/AAAAAAAABGk/zv4rOAkZlQQ/s1600/Rplot01.jpeg" imageanchor="1" style="clear: left; float: left; margin-bottom: 1em; margin-right: 1em;"><img border="0" src="http://2.bp.blogspot.com/-pKATjzSwRQ8/UCSNBRYV1FI/AAAAAAAABGk/zv4rOAkZlQQ/s1600/Rplot01.jpeg" /></a></div><br /><br /><a name='more'></a><br />本例使用的财务报表数据是2012年和2011年的资产负债表，其最高层级是资产、负债和权益三大类。在其下又分若干子项。上图的矩形面积显示了各子项的金额大小，而颜色显示了数据在时间上的变化。可以从中观察到苹果公司将大部分资产投入到长期投资中，而右侧负债所占比例相当的小，而且权益类方面留存收益所占比例最大。从动态比较角度来看，相对于2011年，2012年的现金持有下降，而无形资产大幅度上升。<br /><br />本例所用的<a href="http://www.google.com/finance?q=NASDAQ:AAPL&amp;fstype=ii">原始数据</a>，整理后的<a href="https://www.box.com/s/cc1696665fa0ef00bbee">数据</a>和<a href="https://gist.github.com/3310989">代码</a>：<br /><script src="https://gist.github.com/3310989.js"> </script>

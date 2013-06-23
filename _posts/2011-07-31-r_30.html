@@ -1,0 +1,10 @@
+--- 
+layout: post
+name: r_30
+title: "\xE8\x81\x9A\xE7\xB1\xBB\xE5\x88\x86\xE6\x9E\x90\xE5\x9C\xA8R\xE8\xAF\xAD\xE8\xA8\x80\xE4\xB8\xAD\xE7\x9A\x84\xE5\xAE\x9E\xE7\x8E\xB0"
+date: 2011-07-31 12:52:00 +08:00
+categories: 
+- "\xE8\x81\x9A\xE7\xB1\xBB\xE5\x88\x86\xE6\x9E\x90"
+permalink: /2011/07/r_30.html
+---
+聚类分析和判别分析有相似的作用，都是起到分类的作用。但是，判别分析是已知分类然后总结出判别规则，是一种有指导的学习；而聚类分析则是有了一批样本，不知道它们的分类，甚至连分成几类也不知道，希望用某种方法把观测进行合理的分类，使得同一类的观测比较接近，不同类的观测相差较多，这是无指导的学习。所以，聚类分析依赖于对观测间的接近程度（距离）或相似程度的理解，定义不同的距离量度和相似性量度就可以产生不同的聚类结果。<br /><a name='more'></a><br /><br />1，K聚类<br />newiris &lt;- iris<br />newiris$Species &lt;- NULL<br />kc &lt;- kmeans(newiris, 3)<br />plot(newiris[c("Sepal.Length", "Sepal.Width")], col = kc$cluster)<br />points(kc$centers[,c("Sepal.Length", "Sepal.Width")], col = 1:3, pch = 8, cex=2)<br /><div class="separator" style="clear: both; text-align: center;"><a href="http://2.bp.blogspot.com/-FrEglmSvJ5U/TjTfUsxTqQI/AAAAAAAAAWo/XN3ND5iU17g/s1600/Rplot01.jpeg" imageanchor="1" style="margin-left: 1em; margin-right: 1em;"><img border="0" height="325" src="http://2.bp.blogspot.com/-FrEglmSvJ5U/TjTfUsxTqQI/AAAAAAAAAWo/XN3ND5iU17g/s400/Rplot01.jpeg" width="400" /></a></div><br /><br /><br />2，层次聚类<br />采用的命令是hclust（），其中的参数必须是距离矩阵<br /><br />3，密度聚类<br />library(fpc) 采用的命令是dbscan(）

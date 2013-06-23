@@ -1,0 +1,10 @@
+--- 
+layout: post
+name: r_8149
+title: "\xE7\x94\xA8R\xE8\xAF\xAD\xE8\xA8\x80\xE6\x9D\xA5\xE8\xA7\xA3\xE5\xBE\xAE\xE5\x88\x86\xE6\x96\xB9\xE7\xA8\x8B\xE6\xA8\xA1\xE5\x9E\x8B"
+date: 2011-04-14 19:42:00 +08:00
+categories: 
+- "\xE5\xBE\xAE\xE7\xA7\xAF\xE5\x88\x86"
+permalink: /2011/04/r_8149.html
+---
+20世纪40年代，Lotka（1925）和Volterra（1926）奠定了种间竞争关系的理论基础，他们提出的种间竞争方程对现代生态学理论的发展有着重大影响。Lotka-Volterra模型由一个微分方程组来描述。下面我们就用R中的deSolve包来解这个方程组，代码如下：<br /><br />#首先加载包<br />library(deSolve)<br /><a name='more'></a><br />#设置模型参数<br />pars &lt;- c(rI = 0.2, rG = 1.0, rM = 0.2, AE = 0.5, K = 10)<br />#设置模型的初值和时间<br />yini &lt;- c(P = 1, C = 2)<br />times &lt;- seq(0, 80, by = 1)<br />#构建微分方程，以作为求解的输入<br />LVmod0D &lt;- function(Time, State, Pars) {<br />&nbsp;&nbsp;with(as.list(c(State, Pars)), {<br />&nbsp;&nbsp;IngestC &lt;- rI * P * C<br />&nbsp;&nbsp;GrowthP &lt;- rG * P * (1 - P/K)<br />&nbsp;&nbsp;MortC &lt;- rM * C<br />&nbsp; dP &lt;- GrowthP - IngestC<br />&nbsp;&nbsp;dC &lt;- IngestC * AE - MortC<br />&nbsp; return(list(c(dP, dC)))<br />&nbsp;&nbsp;})<br />&nbsp;&nbsp;}<br /><br />#利用ode函数求解结果<br />out&lt;- ode(func=LVmod0D,y=yini,parms=pars,times=times)<br />#利用绘图函数画出时序图<br />matplot(out[,"time"], out[,2:3], type = "l", xlab = "time", ylab = "Conc", main = "Lotka-Volterra", lwd = 2)<br />legend("topright", c("prey", "consumer"), col = 1:2, lty = 1:2)

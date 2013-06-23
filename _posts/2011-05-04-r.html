@@ -1,0 +1,10 @@
+--- 
+layout: post
+name: r
+title: "\xE7\x94\xA8R\xE8\xAF\xAD\xE8\xA8\x80\xE6\x9D\xA5\xE8\xBF\x9B\xE8\xA1\x8C\xE7\xBA\xBF\xE6\x80\xA7\xE8\xA7\x84\xE5\x88\x92"
+date: 2011-05-04 18:27:00 +08:00
+categories: 
+- "\xE7\xBA\xBF\xE6\x80\xA7\xE8\xA7\x84\xE5\x88\x92"
+permalink: /2011/05/r.html
+---
+<b>线性规划</b>是运筹学中研究较早、发展较快、应用广泛、方法较成熟的一个重要分支,它是辅助人们进行科学管理的一种数学方法.研究线性约束条件下线性目标函数的极值问题的数学理论和方法，英文缩写LP。它是运筹学的一个重要分支，广泛应用于军事作战、经济分析、经营管理和工程技术等方面。为合理地利用有限的人力、物力、财力等资源作出的最优决策，提供科学的依据。<br /><br />下面用R语言的<b>lpSolve</b>扩展包来解决一个简单的线性规划问题<br /><a name='more'></a><br /><br />target: max C = 5*x1 + 8*x2<br />subject to:<br />&nbsp;x1 + x2 &lt;= 2<br />&nbsp;x1 + 2*x2 = 3<br />&nbsp;x1,x2 &gt;=0<br /><br />R语言代码如下：<br /><br />library(lpSolve)<br />eg.lp &lt;- lp(objective.in=c(5, 8),<br />const.mat=matrix(c(1, 1, 1, 2), nrow=2),<br />const.rhs=c(2, 3),<br />const.dir=c("&lt;=", "="), direction="max")<br />eg.lp$solution<br /><br />求解为1,1

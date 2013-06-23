@@ -1,0 +1,10 @@
+--- 
+layout: post
+name: excelspssr
+title: "\xE5\xA6\x82\xE4\xBD\x95\xE4\xBB\x8EEXCEL\xE5\x92\x8CSPSS\xE5\xAF\xBC\xE5\x85\xA5\xE6\x95\xB0\xE6\x8D\xAE\xE5\x88\xB0R"
+date: 2011-11-17 10:17:00 +08:00
+categories: 
+- "\xE6\x95\xB0\xE6\x8D\xAE\xE5\xAF\xBC\xE5\x85\xA5"
+permalink: /2011/11/excelspssr.html
+---
+做分析没有数据真是一大悲剧，正是无源之水、无根之木再加上无米之炊。通常我们搜寻到的数据格式主要有文本格式、Excel格式和SPSS格式。当然也会有从数据库等其它途径进来，这不在本文讨论范围内。<br /><br />一般的文本格式导入，都可以用read.table命令把数据扔进R里面。Excel和Spss数据的话，可用相应软件将文件打开，观察数据结构后将其复制到剪贴板，然后一样可以用read.table('clipboard')扔到R里面。如果文件太大不好复制，那么可以利用Excel和Spss的导出功能，将数据导出成文本格式。<br /><br />还有一种情况就是，你的计算机上没有安装Excel或是Spss，这数据导入就要用到RODBC扩展包了。首先装载RODBC包。然后输入数据文件的绝对路径（要注意是用/而不是\）来定义连接，最后用数据抓取命令获取你需要的标签页数据内容(Sheet1)。<br /><a name='more'></a><br /><blockquote class="tr_bq">library(RODBC)<br />channel=odbcConnectExcel("d:/test.xls")<br />mydata=sqlFetch(channel,'Sheet1')</blockquote>这样简单的两个步骤就可以将Excel数据导入R的mydata变量中。如果是Excel2007格式数据则要换一个函数<br /><blockquote class="tr_bq">channel=odbcConnectExcel2007('d:/test.xlsx')<br />mydata=sqlFetch(channel,'Sheet1')</blockquote>导入spss的sav格式数据则要用到foreign扩展包，加载后直接用read.spss读取sav文件<br /><blockquote class="tr_bq">library(foreign)<br />mydata=read.spss('d:/test.sav')</blockquote>上面的函数在很多情况下没能将sav文件中的附加信息导进来，例如数据的label，那么建议用Hmisc扩展包的spss.get函数，效果会更好一些。<br /><blockquote class="tr_bq">library(Hmisc)<br />data=spss.get("D:/test.sav")</blockquote>

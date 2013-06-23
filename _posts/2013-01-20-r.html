@@ -1,0 +1,10 @@
+--- 
+layout: post
+name: r
+title: "\xE9\x82\xA3\xE4\xBA\x9B\xE5\xA5\x87\xE8\x91\xA9\xE7\x9A\x84R\xE5\x87\xBD\xE6\x95\xB0"
+date: 2013-01-20 10:21:00 +08:00
+categories: 
+- "\xE7\xBC\x96\xE7\xA8\x8B"
+permalink: /2013/01/r.html
+---
+<br />看别人的代码会遇到一些奇葩的函数，一般的教程上很少提到，但却有很好的用处，这类函数基本上分布在base以及utils包中，下面将它们略为归纳一下，以备后用。<br /><br />1，文件执行：<br />在用R生成一个PDF文档后，如果想去打开它，你可能会在文件夹里找到再点开。再或者我们想调用系统中的其它程序来做点事情，可能要打开cmd敲点命令。实际上这都可以在R内部完成。举例来说用pandoc转换na.md成docx再打开它。<br />system('pandoc d:\\rspace\\na.md -o d:\\rspace\\na.docx')<br />shell.exec('d:\\rspace\\na.docx')<br /><br />2，网络浏览：<br />browseURL：浏览某个指定的网页<br />download.file：下载网络文件到本地<br /><br />3，文件操作<br />dir.create：新建一个文件夹<br />list.dirs：显示目录下的文件夹<br />list.files：显示目录下的文档<br />file.create：文档创建<br />file.exists：判断文档是否存在<br />file.remove：文档删除<br />file.rename：重命名<br />file.append：文档添加<br />file.copy：文档复制<br />file.symlink(from, to)<br />file.show：显示文档内容<br />file.info：显示文档信息<br />file.edit：编辑文档<br />zip： 压缩文件<br />unzip： 解压缩文件<br /><br />4，运算进度条<br />在一个大循环运算时，如果可以看到目前的进度是比较方便的，txtProgressBar和setTxtProgressBar函数可以帮助做到这一点，下面是内置的一个小例子：<br /><br />testit <- ...="..." function="function" p="p" x="sort(runif(20)),">{<br />&nbsp; &nbsp; pb <- p="p" txtprogressbar="txtprogressbar">&nbsp; &nbsp; for(i in c(0, x, 1)) {Sys.sleep(0.5); setTxtProgressBar(pb, i)}<br />&nbsp; &nbsp; Sys.sleep(1)<br />&nbsp; &nbsp; close(pb)<br />}<br />testit()<br /><div><br /></div></-></->
