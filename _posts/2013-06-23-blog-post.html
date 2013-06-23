@@ -1,0 +1,367 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!-- saved from url=(0014)about:internet -->
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+
+<title>The Babyname In USA</title>
+
+<base target="_blank"/>
+
+<style type="text/css">
+body, td {
+   font-family: sans-serif;
+   background-color: white;
+   font-size: 12px;
+   margin: 8px;
+}
+
+tt, code, pre {
+   font-family: 'DejaVu Sans Mono', 'Droid Sans Mono', 'Lucida Console', Consolas, Monaco, monospace;
+}
+
+h1 { 
+   font-size:2.2em; 
+}
+
+h2 { 
+   font-size:1.8em; 
+}
+
+h3 { 
+   font-size:1.4em; 
+}
+
+h4 { 
+   font-size:1.0em; 
+}
+
+h5 { 
+   font-size:0.9em; 
+}
+
+h6 { 
+   font-size:0.8em; 
+}
+
+a:visited {
+   color: rgb(50%, 0%, 50%);
+}
+
+pre {	
+   margin-top: 0;
+   max-width: 95%;
+   border: 1px solid #ccc;
+}
+
+pre code {
+   display: block; padding: 0.5em;
+}
+
+code.r {
+   background-color: #F8F8F8;
+}
+
+table, td, th {
+  border: none;
+}
+
+blockquote {
+   color:#666666;
+   margin:0;
+   padding-left: 1em;
+   border-left: 0.5em #EEE solid;
+}
+
+hr {
+   height: 0px;
+   border-bottom: none;
+   border-top-width: thin;
+   border-top-style: dotted;
+   border-top-color: #999999;
+}
+
+@media print {
+   * { 
+      background: transparent !important; 
+      color: black !important; 
+      filter:none !important; 
+      -ms-filter: none !important; 
+   }
+
+   body { 
+      font-size:12pt; 
+      max-width:100%; 
+   }
+       
+   a, a:visited { 
+      text-decoration: underline; 
+   }
+
+   hr { 
+      visibility: hidden;
+      page-break-before: always;
+   }
+
+   pre, blockquote { 
+      padding-right: 1em; 
+      page-break-inside: avoid; 
+   }
+
+   tr, img { 
+      page-break-inside: avoid; 
+   }
+
+   img { 
+      max-width: 100% !important; 
+   }
+
+   @page :left { 
+      margin: 15mm 20mm 15mm 10mm; 
+   }
+     
+   @page :right { 
+      margin: 15mm 10mm 15mm 20mm; 
+   }
+
+   p, h2, h3 { 
+      orphans: 3; widows: 3; 
+   }
+
+   h2, h3 { 
+      page-break-after: avoid; 
+   }
+}
+
+</style>
+
+<!-- Styles for R syntax highlighter -->
+<style type="text/css">
+   pre .operator,
+   pre .paren {
+     color: rgb(104, 118, 135)
+   }
+
+   pre .literal {
+     color: rgb(88, 72, 246)
+   }
+
+   pre .number {
+     color: rgb(0, 0, 205);
+   }
+
+   pre .comment {
+     color: rgb(76, 136, 107);
+   }
+
+   pre .keyword {
+     color: rgb(0, 0, 255);
+   }
+
+   pre .identifier {
+     color: rgb(0, 0, 0);
+   }
+
+   pre .string {
+     color: rgb(3, 106, 7);
+   }
+</style>
+
+<!-- R syntax highlighter -->
+<script type="text/javascript">
+var hljs=new function(){function m(p){return p.replace(/&/gm,"&amp;").replace(/</gm,"&lt;")}function f(r,q,p){return RegExp(q,"m"+(r.cI?"i":"")+(p?"g":""))}function b(r){for(var p=0;p<r.childNodes.length;p++){var q=r.childNodes[p];if(q.nodeName=="CODE"){return q}if(!(q.nodeType==3&&q.nodeValue.match(/\s+/))){break}}}function h(t,s){var p="";for(var r=0;r<t.childNodes.length;r++){if(t.childNodes[r].nodeType==3){var q=t.childNodes[r].nodeValue;if(s){q=q.replace(/\n/g,"")}p+=q}else{if(t.childNodes[r].nodeName=="BR"){p+="\n"}else{p+=h(t.childNodes[r])}}}if(/MSIE [678]/.test(navigator.userAgent)){p=p.replace(/\r/g,"\n")}return p}function a(s){var r=s.className.split(/\s+/);r=r.concat(s.parentNode.className.split(/\s+/));for(var q=0;q<r.length;q++){var p=r[q].replace(/^language-/,"");if(e[p]){return p}}}function c(q){var p=[];(function(s,t){for(var r=0;r<s.childNodes.length;r++){if(s.childNodes[r].nodeType==3){t+=s.childNodes[r].nodeValue.length}else{if(s.childNodes[r].nodeName=="BR"){t+=1}else{if(s.childNodes[r].nodeType==1){p.push({event:"start",offset:t,node:s.childNodes[r]});t=arguments.callee(s.childNodes[r],t);p.push({event:"stop",offset:t,node:s.childNodes[r]})}}}}return t})(q,0);return p}function k(y,w,x){var q=0;var z="";var s=[];function u(){if(y.length&&w.length){if(y[0].offset!=w[0].offset){return(y[0].offset<w[0].offset)?y:w}else{return w[0].event=="start"?y:w}}else{return y.length?y:w}}function t(D){var A="<"+D.nodeName.toLowerCase();for(var B=0;B<D.attributes.length;B++){var C=D.attributes[B];A+=" "+C.nodeName.toLowerCase();if(C.value!==undefined&&C.value!==false&&C.value!==null){A+='="'+m(C.value)+'"'}}return A+">"}while(y.length||w.length){var v=u().splice(0,1)[0];z+=m(x.substr(q,v.offset-q));q=v.offset;if(v.event=="start"){z+=t(v.node);s.push(v.node)}else{if(v.event=="stop"){var p,r=s.length;do{r--;p=s[r];z+=("</"+p.nodeName.toLowerCase()+">")}while(p!=v.node);s.splice(r,1);while(r<s.length){z+=t(s[r]);r++}}}}return z+m(x.substr(q))}function j(){function q(x,y,v){if(x.compiled){return}var u;var s=[];if(x.k){x.lR=f(y,x.l||hljs.IR,true);for(var w in x.k){if(!x.k.hasOwnProperty(w)){continue}if(x.k[w] instanceof Object){u=x.k[w]}else{u=x.k;w="keyword"}for(var r in u){if(!u.hasOwnProperty(r)){continue}x.k[r]=[w,u[r]];s.push(r)}}}if(!v){if(x.bWK){x.b="\\b("+s.join("|")+")\\s"}x.bR=f(y,x.b?x.b:"\\B|\\b");if(!x.e&&!x.eW){x.e="\\B|\\b"}if(x.e){x.eR=f(y,x.e)}}if(x.i){x.iR=f(y,x.i)}if(x.r===undefined){x.r=1}if(!x.c){x.c=[]}x.compiled=true;for(var t=0;t<x.c.length;t++){if(x.c[t]=="self"){x.c[t]=x}q(x.c[t],y,false)}if(x.starts){q(x.starts,y,false)}}for(var p in e){if(!e.hasOwnProperty(p)){continue}q(e[p].dM,e[p],true)}}function d(B,C){if(!j.called){j();j.called=true}function q(r,M){for(var L=0;L<M.c.length;L++){if((M.c[L].bR.exec(r)||[null])[0]==r){return M.c[L]}}}function v(L,r){if(D[L].e&&D[L].eR.test(r)){return 1}if(D[L].eW){var M=v(L-1,r);return M?M+1:0}return 0}function w(r,L){return L.i&&L.iR.test(r)}function K(N,O){var M=[];for(var L=0;L<N.c.length;L++){M.push(N.c[L].b)}var r=D.length-1;do{if(D[r].e){M.push(D[r].e)}r--}while(D[r+1].eW);if(N.i){M.push(N.i)}return f(O,M.join("|"),true)}function p(M,L){var N=D[D.length-1];if(!N.t){N.t=K(N,E)}N.t.lastIndex=L;var r=N.t.exec(M);return r?[M.substr(L,r.index-L),r[0],false]:[M.substr(L),"",true]}function z(N,r){var L=E.cI?r[0].toLowerCase():r[0];var M=N.k[L];if(M&&M instanceof Array){return M}return false}function F(L,P){L=m(L);if(!P.k){return L}var r="";var O=0;P.lR.lastIndex=0;var M=P.lR.exec(L);while(M){r+=L.substr(O,M.index-O);var N=z(P,M);if(N){x+=N[1];r+='<span class="'+N[0]+'">'+M[0]+"</span>"}else{r+=M[0]}O=P.lR.lastIndex;M=P.lR.exec(L)}return r+L.substr(O,L.length-O)}function J(L,M){if(M.sL&&e[M.sL]){var r=d(M.sL,L);x+=r.keyword_count;return r.value}else{return F(L,M)}}function I(M,r){var L=M.cN?'<span class="'+M.cN+'">':"";if(M.rB){y+=L;M.buffer=""}else{if(M.eB){y+=m(r)+L;M.buffer=""}else{y+=L;M.buffer=r}}D.push(M);A+=M.r}function G(N,M,Q){var R=D[D.length-1];if(Q){y+=J(R.buffer+N,R);return false}var P=q(M,R);if(P){y+=J(R.buffer+N,R);I(P,M);return P.rB}var L=v(D.length-1,M);if(L){var O=R.cN?"</span>":"";if(R.rE){y+=J(R.buffer+N,R)+O}else{if(R.eE){y+=J(R.buffer+N,R)+O+m(M)}else{y+=J(R.buffer+N+M,R)+O}}while(L>1){O=D[D.length-2].cN?"</span>":"";y+=O;L--;D.length--}var r=D[D.length-1];D.length--;D[D.length-1].buffer="";if(r.starts){I(r.starts,"")}return R.rE}if(w(M,R)){throw"Illegal"}}var E=e[B];var D=[E.dM];var A=0;var x=0;var y="";try{var s,u=0;E.dM.buffer="";do{s=p(C,u);var t=G(s[0],s[1],s[2]);u+=s[0].length;if(!t){u+=s[1].length}}while(!s[2]);if(D.length>1){throw"Illegal"}return{r:A,keyword_count:x,value:y}}catch(H){if(H=="Illegal"){return{r:0,keyword_count:0,value:m(C)}}else{throw H}}}function g(t){var p={keyword_count:0,r:0,value:m(t)};var r=p;for(var q in e){if(!e.hasOwnProperty(q)){continue}var s=d(q,t);s.language=q;if(s.keyword_count+s.r>r.keyword_count+r.r){r=s}if(s.keyword_count+s.r>p.keyword_count+p.r){r=p;p=s}}if(r.language){p.second_best=r}return p}function i(r,q,p){if(q){r=r.replace(/^((<[^>]+>|\t)+)/gm,function(t,w,v,u){return w.replace(/\t/g,q)})}if(p){r=r.replace(/\n/g,"<br>")}return r}function n(t,w,r){var x=h(t,r);var v=a(t);var y,s;if(v){y=d(v,x)}else{return}var q=c(t);if(q.length){s=document.createElement("pre");s.innerHTML=y.value;y.value=k(q,c(s),x)}y.value=i(y.value,w,r);var u=t.className;if(!u.match("(\\s|^)(language-)?"+v+"(\\s|$)")){u=u?(u+" "+v):v}if(/MSIE [678]/.test(navigator.userAgent)&&t.tagName=="CODE"&&t.parentNode.tagName=="PRE"){s=t.parentNode;var p=document.createElement("div");p.innerHTML="<pre><code>"+y.value+"</code></pre>";t=p.firstChild.firstChild;p.firstChild.cN=s.cN;s.parentNode.replaceChild(p.firstChild,s)}else{t.innerHTML=y.value}t.className=u;t.result={language:v,kw:y.keyword_count,re:y.r};if(y.second_best){t.second_best={language:y.second_best.language,kw:y.second_best.keyword_count,re:y.second_best.r}}}function o(){if(o.called){return}o.called=true;var r=document.getElementsByTagName("pre");for(var p=0;p<r.length;p++){var q=b(r[p]);if(q){n(q,hljs.tabReplace)}}}function l(){if(window.addEventListener){window.addEventListener("DOMContentLoaded",o,false);window.addEventListener("load",o,false)}else{if(window.attachEvent){window.attachEvent("onload",o)}else{window.onload=o}}}var e={};this.LANGUAGES=e;this.highlight=d;this.highlightAuto=g;this.fixMarkup=i;this.highlightBlock=n;this.initHighlighting=o;this.initHighlightingOnLoad=l;this.IR="[a-zA-Z][a-zA-Z0-9_]*";this.UIR="[a-zA-Z_][a-zA-Z0-9_]*";this.NR="\\b\\d+(\\.\\d+)?";this.CNR="\\b(0[xX][a-fA-F0-9]+|(\\d+(\\.\\d*)?|\\.\\d+)([eE][-+]?\\d+)?)";this.BNR="\\b(0b[01]+)";this.RSR="!|!=|!==|%|%=|&|&&|&=|\\*|\\*=|\\+|\\+=|,|\\.|-|-=|/|/=|:|;|<|<<|<<=|<=|=|==|===|>|>=|>>|>>=|>>>|>>>=|\\?|\\[|\\{|\\(|\\^|\\^=|\\||\\|=|\\|\\||~";this.ER="(?![\\s\\S])";this.BE={b:"\\\\.",r:0};this.ASM={cN:"string",b:"'",e:"'",i:"\\n",c:[this.BE],r:0};this.QSM={cN:"string",b:'"',e:'"',i:"\\n",c:[this.BE],r:0};this.CLCM={cN:"comment",b:"//",e:"$"};this.CBLCLM={cN:"comment",b:"/\\*",e:"\\*/"};this.HCM={cN:"comment",b:"#",e:"$"};this.NM={cN:"number",b:this.NR,r:0};this.CNM={cN:"number",b:this.CNR,r:0};this.BNM={cN:"number",b:this.BNR,r:0};this.inherit=function(r,s){var p={};for(var q in r){p[q]=r[q]}if(s){for(var q in s){p[q]=s[q]}}return p}}();hljs.LANGUAGES.r={dM:{c:[hljs.HCM,{cN:"number",b:"\\b0[xX][0-9a-fA-F]+[Li]?\\b",e:hljs.IMMEDIATE_RE,r:0},{cN:"number",b:"\\b\\d+(?:[eE][+\\-]?\\d*)?L\\b",e:hljs.IMMEDIATE_RE,r:0},{cN:"number",b:"\\b\\d+\\.(?!\\d)(?:i\\b)?",e:hljs.IMMEDIATE_RE,r:1},{cN:"number",b:"\\b\\d+(?:\\.\\d*)?(?:[eE][+\\-]?\\d*)?i?\\b",e:hljs.IMMEDIATE_RE,r:0},{cN:"number",b:"\\.\\d+(?:[eE][+\\-]?\\d*)?i?\\b",e:hljs.IMMEDIATE_RE,r:1},{cN:"keyword",b:"(?:tryCatch|library|setGeneric|setGroupGeneric)\\b",e:hljs.IMMEDIATE_RE,r:10},{cN:"keyword",b:"\\.\\.\\.",e:hljs.IMMEDIATE_RE,r:10},{cN:"keyword",b:"\\.\\.\\d+(?![\\w.])",e:hljs.IMMEDIATE_RE,r:10},{cN:"keyword",b:"\\b(?:function)",e:hljs.IMMEDIATE_RE,r:2},{cN:"keyword",b:"(?:if|in|break|next|repeat|else|for|return|switch|while|try|stop|warning|require|attach|detach|source|setMethod|setClass)\\b",e:hljs.IMMEDIATE_RE,r:1},{cN:"literal",b:"(?:NA|NA_integer_|NA_real_|NA_character_|NA_complex_)\\b",e:hljs.IMMEDIATE_RE,r:10},{cN:"literal",b:"(?:NULL|TRUE|FALSE|T|F|Inf|NaN)\\b",e:hljs.IMMEDIATE_RE,r:1},{cN:"identifier",b:"[a-zA-Z.][a-zA-Z0-9._]*\\b",e:hljs.IMMEDIATE_RE,r:0},{cN:"operator",b:"<\\-(?!\\s*\\d)",e:hljs.IMMEDIATE_RE,r:2},{cN:"operator",b:"\\->|<\\-",e:hljs.IMMEDIATE_RE,r:1},{cN:"operator",b:"%%|~",e:hljs.IMMEDIATE_RE},{cN:"operator",b:">=|<=|==|!=|\\|\\||&&|=|\\+|\\-|\\*|/|\\^|>|<|!|&|\\||\\$|:",e:hljs.IMMEDIATE_RE,r:0},{cN:"operator",b:"%",e:"%",i:"\\n",r:1},{cN:"identifier",b:"`",e:"`",r:0},{cN:"string",b:'"',e:'"',c:[hljs.BE],r:0},{cN:"string",b:"'",e:"'",c:[hljs.BE],r:0},{cN:"paren",b:"[[({\\])}]",e:hljs.IMMEDIATE_RE,r:0}]}};
+hljs.initHighlightingOnLoad();
+</script>
+
+
+<!-- MathJax scripts -->
+<script type="text/javascript" src="https://c328740.ssl.cf1.rackcdn.com/mathjax/2.0-latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+
+</head>
+
+<body>
+<h1>The Babyname In USA</h1>
+
+<ul>
+<li><strong>Author</strong>: <a href="https://github.com/jianchongsu/">Jianchong Su</a>
+&ndash; I know you want math to show you are a statistician, e.g. \( f(k)={n \choose k}p^{k}(1-p)^{n-k} \)</li>
+</ul>
+
+<h2>Starter</h2>
+
+<p>On my 25th birthday,I strolled in the gitHub.I find a research about the babynames from the 1880 to 2008,the author list a list about a thousand babynames which are used most.He wants to see the  1000 names include the percent the whole the country babynames.</p>
+
+<p>It is interesting to find the 1000 boynames decreasing slower than the girls&#39;.To the 2008,the 1000 boynames still include at least 80% the whole boynames in the state.But the girls&#39; has decreased to about 68%.<br/>
+I want to find the most used babynames in the 2008.</p>
+
+<pre><code>##   year    name percent sex
+## 1 1880    John 0.08154 boy
+## 2 1880 William 0.08051 boy
+## 3 1880   James 0.05006 boy
+## 4 1880 Charles 0.04517 boy
+## 5 1880  George 0.04329 boy
+## 6 1880   Frank 0.02738 boy
+</code></pre>
+
+<pre><code class="r">btop2008 = boy2008[order(boy2008$percent, decreasing = T), ]
+head(btop2008, 10)
+</code></pre>
+
+<pre><code>##        year        name  percent sex
+## 128001 2008       Jacob 0.010355 boy
+## 128002 2008     Michael 0.009437 boy
+## 128003 2008       Ethan 0.009301 boy
+## 128004 2008      Joshua 0.008799 boy
+## 128005 2008      Daniel 0.008702 boy
+## 128006 2008   Alexander 0.008566 boy
+## 128007 2008     Anthony 0.008442 boy
+## 128008 2008     William 0.008438 boy
+## 128009 2008 Christopher 0.008268 boy
+## 128010 2008     Matthew 0.008061 boy
+</code></pre>
+
+<p>So,Jacob is the champion.There is a boy named Jacob in one hundred boys.The other most used boynames in 2008 are Michael,Ethan,Joshua,Daniel and Alexander.<br/>
+It is quite funny in the hot US TV series <em>LOST</em>,Jacob ,Michael,Ethan and Daniel all there.</p>
+
+<p>Maybe when make the TV series story,the maker has pay the attention the research.<br/>
+Maybe the most babynames research is quite useful for our life!<br/>
+How sex the finding!<br/>
+Next to the girls</p>
+
+<pre><code class="r">gtop2008 = girl2008[order(girl2008$percent, decreasing = T), ]
+head(gtop2008, 10)
+</code></pre>
+
+<pre><code>##        year      name  percent  sex
+## 257001 2008      Emma 0.009043 girl
+## 257002 2008  Isabella 0.008941 girl
+## 257003 2008     Emily 0.008377 girl
+## 257004 2008   Madison 0.008199 girl
+## 257005 2008       Ava 0.008198 girl
+## 257006 2008    Olivia 0.008196 girl
+## 257007 2008    Sophia 0.007729 girl
+## 257008 2008   Abigail 0.007250 girl
+## 257009 2008 Elizabeth 0.005748 girl
+## 257010 2008     Chloe 0.005692 girl
+</code></pre>
+
+<p>The most used girlnames are Emma,Isabella,Emily,Madison and Ava.</p>
+
+<p>Haha,i thought the &ldquo;Jack&rdquo; and &ldquo;Rose&rdquo; will win the games.<br/>
+Now i will find the order the &ldquo;Jack&quot;and&quot;Rose&rdquo;.</p>
+
+<pre><code class="r">which(btop2008$name == &quot;Jack&quot;)
+</code></pre>
+
+<pre><code>## [1] 39
+</code></pre>
+
+<pre><code class="r">btop2008[which(btop2008$name == &quot;Jack&quot;), ]
+</code></pre>
+
+<pre><code>##        year name  percent sex
+## 128039 2008 Jack 0.004547 boy
+</code></pre>
+
+<pre><code class="r">which(gtop2008$name == &quot;Rose&quot;)
+</code></pre>
+
+<pre><code>## [1] 344
+</code></pre>
+
+<pre><code class="r">gtop2008[which(gtop2008$name == &quot;Rose&quot;), ]
+</code></pre>
+
+<pre><code>##        year name  percent  sex
+## 257344 2008 Rose 0.000465 girl
+</code></pre>
+
+<p>Wooe.&ldquo;Jack&rdquo; ranks the 39,&ldquo;Rose&rdquo; is far away from the &ldquo;Jack&rdquo;,she ranks the 334.</p>
+
+<p>Ok,let us do it again in the 1880.</p>
+
+<pre><code class="r">baby1880 = babyname[babyname[, 1] == &quot;1880&quot;, ]
+boy1880 = baby1880[baby1880$sex == &quot;boy&quot;, ]
+girl1880 = baby1880[baby1880$sex == &quot;girl&quot;, ]
+btop1880 = boy1880[order(boy1880$percent, decreasing = T), ]
+head(btop1880, 10)
+</code></pre>
+
+<pre><code>##    year    name percent sex
+## 1  1880    John 0.08154 boy
+## 2  1880 William 0.08051 boy
+## 3  1880   James 0.05006 boy
+## 4  1880 Charles 0.04517 boy
+## 5  1880  George 0.04329 boy
+## 6  1880   Frank 0.02738 boy
+## 7  1880  Joseph 0.02223 boy
+## 8  1880  Thomas 0.02140 boy
+## 9  1880   Henry 0.02064 boy
+## 10 1880  Robert 0.02040 boy
+</code></pre>
+
+<pre><code class="r">gtop1880 = girl1880[order(girl2008$percent, decreasing = T), ]
+head(gtop1880, 10)
+</code></pre>
+
+<pre><code>##        year      name percent  sex
+## 129001 1880      Mary 0.07238 girl
+## 129002 1880      Anna 0.02668 girl
+## 129003 1880      Emma 0.02052 girl
+## 129004 1880 Elizabeth 0.01987 girl
+## 129005 1880    Minnie 0.01789 girl
+## 129006 1880  Margaret 0.01617 girl
+## 129007 1880       Ida 0.01508 girl
+## 129008 1880     Alice 0.01449 girl
+## 129009 1880    Bertha 0.01352 girl
+## 129010 1880     Sarah 0.01320 girl
+</code></pre>
+
+<p>John,James,Charles are still in the <em>LOST</em>.<br/>
+Where are the &ldquo;Jack&rdquo; and &ldquo;Rose&rdquo;?</p>
+
+<pre><code class="r">which(btop1880$name == &quot;Jack&quot;)
+</code></pre>
+
+<pre><code>## [1] 77
+</code></pre>
+
+<pre><code class="r">btop2008[which(btop1880$name == &quot;Jack&quot;), ]
+</code></pre>
+
+<pre><code>##        year      name  percent sex
+## 128077 2008 Nathaniel 0.002679 boy
+</code></pre>
+
+<pre><code class="r">which(gtop1880$name == &quot;Rose&quot;)
+</code></pre>
+
+<pre><code>## [1] 30
+</code></pre>
+
+<pre><code class="r">btop2008[which(gtop1880$name == &quot;Rose&quot;), ]
+</code></pre>
+
+<pre><code>##        year  name  percent sex
+## 128030 2008 Gavin 0.005414 boy
+</code></pre>
+
+<p>####Jack is 77,and Rose is 30.Compare to 2008,Jack is 39,Rose is 334.<br/>
+&ldquo;Rose&rdquo; had made a huge change in the history of girlnames.She also made the farther distance to Jack.What a pity about <em>Titanic</em>!</p>
+
+<pre><code class="r"># Investigate the percentage of all names that the top 1000 baby names
+# occupies
+ofall &lt;- ddply(all, .(year, sex), sump)
+qplot(year, percent, data = ofall, colour = sex, geom = &quot;line&quot;) + ylim(0, 1)
+</code></pre>
+
+<p><img src="data:image/png;base64,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" alt="plot of chunk birthplot"/> </p>
+
+</body>
+
+</html>
+
